@@ -1,0 +1,2852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexa Tiling Pty Ltd - Premium Tiling Services Melbourne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005DB4;
+            --primary-black: #222221;
+            --light-blue: #0073E6;
+            --accent-gold: #D4AF37;
+            --text-gray: #666;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        /* Enhanced Hero Styles */
+.hero {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+    overflow: hidden;
+}
+
+.hero-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px),
+        repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
+    opacity: 0.3;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    animation: slideInDown 1s ease-out;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.hero-badge i {
+    color: var(--accent-gold);
+}
+
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-word {
+    display: inline-block;
+    animation: heroWordSlide 1s ease-out both;
+}
+
+.hero-word:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+@keyframes heroWordSlide {
+    from {
+        opacity: 0;
+        transform: translateY(50px) rotateX(-90deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+}
+
+/* Enhanced CTA Buttons */
+.cta-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cta-button:hover:before {
+    width: 300px;
+    height: 300px;
+}
+
+.cta-icon {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover .cta-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.cta-arrow {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover .cta-arrow {
+    transform: translateX(5px);
+}
+
+/* Enhanced Stats */
+.hero-stats {
+    position: relative;
+    margin-top: 4rem;
+}
+
+.stat-card {
+    position: relative;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.stat-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+    opacity: 0.6;
+    transform: rotate(15deg) scale(1.2);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--accent-gold), #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+}
+
+/* Hero Scroll Indicator */
+.hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+.hero-scroll span {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.hero-scroll i {
+    font-size: 1.2rem;
+    opacity: 0.6;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Enhanced Services Section */
+.services-section {
+    background: #fafbfc;
+}
+
+.section-badge {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    position: relative;
+    padding: 0 20px;
+}
+
+.section-badge:before,
+.section-badge:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 1px;
+    background: var(--primary-blue);
+}
+
+.section-badge:before {
+    left: -50px;
+}
+
+.section-badge:after {
+    right: -50px;
+}
+
+.service-card {
+    position: relative;
+    background: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card.featured {
+    border: 2px solid var(--primary-blue);
+    transform: scale(1.05);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--primary-blue);
+    color: white;
+    padding: 4px 20px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.service-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgba(0,93,180,0.1);
+    line-height: 1;
+}
+
+.service-features {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+}
+
+.service-features li {
+    padding: 0.5rem 0;
+    color: var(--text-gray);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.service-features i {
+    color: var(--primary-blue);
+    font-size: 0.8rem;
+}
+
+.service-link {
+    margin-top: auto;
+    color: var(--primary-blue);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: gap 0.3s ease;
+}
+
+.service-link:hover {
+    gap: 1rem;
+}
+
+/* Trust Section */
+.trust-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.trust-section:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.trust-item {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.trust-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.15);
+}
+
+.trust-item i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-gold);
+}
+
+.trust-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.trust-item p {
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+/* Enhanced Value Cards */
+.value-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.value-card:hover {
+    border-color: var(--primary-blue);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.value-icon-wrapper {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2rem;
+}
+
+.value-icon {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.value-card:hover .value-icon {
+    transform: rotate(360deg) scale(1.1);
+}
+
+.value-icon-bg {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+    border-radius: 50%;
+    opacity: 0.2;
+    z-index: 1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.2; }
+    50% { transform: scale(1.1); opacity: 0.1; }
+}
+
+.value-stats {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.value-stat {
+    text-align: center;
+}
+
+.value-number {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 0.25rem;
+}
+
+.value-label {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+}
+
+/* Home CTA Section */
+.home-cta-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-cta-section:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,93,180,0.05) 0%, transparent 70%);
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-black);
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+}
+
+.cta-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cta-button.large {
+    padding: 20px 50px;
+    font-size: 1.2rem;
+    box-shadow: 0 10px 30px rgba(0,93,180,0.3);
+}
+
+.cta-phone {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+}
+
+.phone-link {
+    color: var(--primary-blue);
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.phone-link:hover {
+    transform: scale(1.05);
+    color: var(--light-blue);
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .hero-title {
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: center;
+    }
+    
+    .cta-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .hero-stats {
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .hero-title {
+        justify-content: flex-start;
+    }
+    
+    .hero-description {
+        margin-left: 0;
+        text-align: left;
+    }
+}
+
+/* Animation on scroll (AOS-like) */
+[data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+[data-aos="zoom-in"] {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.6s ease;
+}
+
+.page.active [data-aos] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-black);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animated Background Elements - Simplified for performance */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.03;
+            will-change: transform;
+        }
+
+        .shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation: float 30s infinite linear;
+        }
+
+        .shape:nth-child(2) {
+            top: 60%;
+            left: 80%;
+            animation: float 25s infinite linear reverse;
+        }
+
+        .shape:nth-child(3) {
+            top: 80%;
+            left: 20%;
+            animation: float 35s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-20px) rotate(360deg); }
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+            letter-spacing: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-gold));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-black);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+            cursor: pointer;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -10px;
+            right: -10px;
+            bottom: 0;
+            background: var(--primary-blue);
+            border-radius: 25px;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-links a:hover::before, .nav-links a.active::before {
+            opacity: 0.1;
+            transform: scale(1);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-blue);
+        }
+
+        /* Enhanced Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-blue);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 70px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page {
+            display: none;
+            min-height: calc(100vh - 70px);
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero Section - Mobile First Design */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            color: white;
+            padding: 60px 0 40px;
+            position: relative;
+            overflow: hidden;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.6;
+            animation: slideInUp 1s ease-out 0.6s both;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            animation: slideInUp 1s ease-out 0.9s both;
+            align-items: center;
+            width: 100%;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            width: 100%;
+            max-width: 280px;
+            min-height: 50px;
+        }
+
+        .cta-primary {
+            background: var(--white);
+            color: var(--primary-blue);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Mobile-First Hero Stats */
+        .hero-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 3rem;
+            animation: slideInUp 1s ease-out 1.2s both;
+            width: 100%;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            width: 100%;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+            color: var(--accent-gold);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-gold));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-gray);
+            max-width: 90%;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Mobile-First Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,93,180,0.05);
+            text-align: center;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,93,180,0.25);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Featured Section */
+        .featured-section {
+            background: linear-gradient(135deg, var(--light-gray) 0%, #ffffff 100%);
+            position: relative;
+        }
+
+        /* Mobile-First About Section */
+        .about-hero {
+            display: block;
+            margin-bottom: 3rem;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-visual {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            height: 200px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .expertise-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,93,180,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-blue), var(--accent-gold));
+            transition: width 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .expertise-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .expertise-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Mobile-First Projects */
+        .projects-showcase {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--light-blue));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 2;
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-black);
+            margin-bottom: 0.8rem;
+        }
+
+        .project-info p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.8rem;
+        }
+
+        /* Mobile-First Contact Section */
+        .contact-wrapper {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .contact-grid {
+            display: block;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .contact-form h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-black);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e8ecef;
+            border-radius: 12px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+            background: #fafbfc;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: var(--white);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,93,180,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,93,180,0.4);
+        }
+
+        .contact-info {
+            padding: 1rem 0;
+        }
+
+        .contact-info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            background: var(--white);
+            padding: 1.2rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,93,180,0.05);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-blue), var(--accent-gold));
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-item i {
+            color: var(--primary-blue);
+            margin-right: 8px;
+            width: 16px;
+        }
+
+        /* Footer - Mobile Optimized */
+        footer {
+            background: var(--primary-black);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-section {
+            position: relative;
+            padding: 1.2rem;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-section h3 {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            transition: padding-left 0.3s ease;
+            padding: 0.2rem 0;
+            border-radius: 8px;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .footer-section li:hover {
+            padding-left: 0.8rem;
+            background: rgba(0,93,180,0.1);
+        }
+
+        .footer-section li i {
+            margin-right: 6px;
+            color: var(--primary-blue);
+            min-width: 14px;
+        }
+
+        .footer-section p, .footer-section li {
+            line-height: 1.6;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #aaa;
+            position: relative;
+            z-index: 2;
+            font-size: 0.85rem;
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(0,93,180,0.1);
+            z-index: 9999;
+        }
+
+        .scroll-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-gold));
+            width: 0%;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Tablet Responsive Design */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 30px;
+            }
+
+            nav {
+                padding: 1.2rem 0;
+            }
+
+            .logo {
+                font-size: 2.2rem;
+                letter-spacing: 3px;
+            }
+
+            .nav-links {
+                gap: 3rem;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            main {
+                margin-top: 90px;
+            }
+
+            .hero {
+                padding: 100px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                margin-bottom: 2.5rem;
+                max-width: 80%;
+            }
+
+            .cta-buttons {
+                flex-direction: row;
+                gap: 2rem;
+                justify-content: center;
+            }
+
+            .cta-button {
+                padding: 18px 40px;
+                font-size: 1.1rem;
+                width: auto;
+                max-width: none;
+            }
+
+            .hero-stats {
+                flex-direction: row;
+                position: absolute;
+                bottom: 50px;
+                right: 50px;
+                margin-top: 0;
+                max-width: none;
+            }
+
+            .stat-card {
+                min-width: 120px;
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 80px 0;
+            }
+
+            .section-header {
+                margin-bottom: 4rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .section-title::after {
+                width: 80px;
+                height: 4px;
+                bottom: -15px;
+            }
+
+            .section-subtitle {
+                font-size: 1.2rem;
+                max-width: 600px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+
+            .service-card {
+                padding: 2.5rem;
+                text-align: left;
+            }
+
+            .service-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+                margin: 0 0 1.5rem 0;
+            }
+
+            .service-card h3 {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .service-card p {
+                font-size: 1.05rem;
+            }
+
+            .about-hero {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: center;
+                margin-bottom: 4rem;
+            }
+
+            .about-text {
+                font-size: 1.15rem;
+                line-height: 1.9;
+                margin-bottom: 0;
+            }
+
+            .about-visual {
+                height: 350px;
+                font-size: 1.2rem;
+            }
+
+            .expertise-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+
+            .expertise-card {
+                padding: 2rem;
+            }
+
+            .projects-showcase {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+
+            .project-image {
+                height: 250px;
+            }
+
+            .project-overlay {
+                font-size: 1rem;
+                padding: 1.5rem;
+            }
+
+            .project-info {
+                padding: 2rem;
+            }
+
+            .project-info h3 {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+            }
+
+            .project-info p {
+                font-size: 1rem;
+            }
+
+            .contact-wrapper {
+                padding: 3rem;
+            }
+
+            .contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                align-items: start;
+            }
+
+            .contact-form {
+                padding: 3rem;
+                margin-bottom: 0;
+            }
+
+            .contact-form h3 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .form-group {
+                margin-bottom: 2rem;
+            }
+
+            .form-group label {
+                font-size: 1.05rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+
+            .submit-btn {
+                padding: 18px 40px;
+                font-size: 1.1rem;
+                width: auto;
+            }
+
+            .contact-info {
+                padding: 2rem 0;
+            }
+
+            .contact-info h3 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .contact-item {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+                font-size: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2.5rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .footer-section {
+                padding: 1.5rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1.3rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .footer-section li {
+                margin-bottom: 0.8rem;
+                font-size: 1rem;
+            }
+
+            .footer-section p {
+                font-size: 1rem;
+            }
+
+            .footer-bottom {
+                padding-top: 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Desktop Responsive Design */
+@media (min-width: 1024px) {
+    .hero-stats {
+        position: static;
+        justify-content: center;
+        margin-top: 3rem;
+        flex-wrap: wrap;
+    }
+
+    .stat-card {
+        min-width: 120px;
+    }
+
+    .about-hero {
+        gap: 5rem;
+        margin-bottom: 5rem;
+    }
+
+    .about-visual {
+        height: 400px;
+    }
+
+    .content-section {
+        padding: 120px 0;
+    }
+
+    .section-header {
+        margin-bottom: 5rem;
+    }
+
+    .section-title {
+        font-size: 3.2rem;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        margin-top: 4rem;
+    }
+
+    .projects-showcase {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        margin-top: 4rem;
+    }
+
+    .contact-wrapper {
+        padding: 4rem;
+    }
+
+    .contact-grid {
+        gap: 5rem;
+    }
+
+    footer {
+        padding: 4rem 0 2rem;
+    }
+}
+
+        /* Large Desktop */
+@media (min-width: 1200px) {
+    .hero {
+        padding: 150px 0 100px;
+        text-align: left;
+    }
+
+    .hero h1 {
+        font-size: 4.5rem;
+        margin-bottom: 2rem;
+        letter-spacing: 3px;
+    }
+
+    .hero .tagline {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 3rem;
+        line-height: 1.8;
+        max-width: 800px;
+        margin-left: 0;
+    }
+
+    .cta-buttons {
+        justify-content: flex-start;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        text-align: left;
+    }
+
+    .hero-stats {
+        position: static;
+        justify-content: flex-start;
+        margin-top: 3rem;
+        flex-wrap: wrap;
+    }
+
+    .stat-card {
+        min-width: 120px;
+    }
+}
+
+        /* Mobile Navigation Override */
+        @media (max-width: 767px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: start;
+                align-items: center;
+                padding-top: 2rem;
+                gap: 1.5rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem 2rem;
+                border-radius: 25px;
+                width: 80%;
+                text-align: center;
+                background: rgba(0,93,180,0.05);
+                margin: 0.3rem 0;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .service-card:hover,
+            .project-card:hover,
+            .expertise-card:hover {
+                transform: none;
+            }
+
+            .cta-button:hover {
+                transform: none;
+            }
+
+            .contact-item:hover {
+                transform: none;
+            }
+
+            .logo:hover::after {
+                transform: scaleX(0);
+            }
+
+            .nav-links a:hover::before {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary-blue), var(--light-blue));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--light-blue), var(--primary-blue));
+        }
+
+        /* Additional Mobile Improvements */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+                letter-spacing: 1px;
+            }
+
+            .hero {
+                padding: 40px 0 30px;
+                min-height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+                letter-spacing: 1px;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+                line-height: 1.5;
+                max-width: 95%;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+                max-width: 260px;
+            }
+
+            .hero-stats {
+                margin-top: 2rem;
+                max-width: 280px;
+            }
+
+            .stat-card {
+                padding: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .content-section {
+                padding: 40px 0;
+            }
+
+            .section-header {
+                margin-bottom: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .section-title::after {
+                width: 50px;
+                height: 2px;
+                bottom: -8px;
+            }
+
+            .section-subtitle {
+                font-size: 0.9rem;
+                max-width: 95%;
+            }
+
+            .services-grid,
+            .expertise-grid,
+            .projects-showcase {
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .service-card,
+            .expertise-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+
+            .service-card h3,
+            .expertise-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .service-card p,
+            .expertise-card p {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            .project-image {
+                height: 180px;
+            }
+
+            .project-overlay {
+                font-size: 0.8rem;
+                padding: 0.8rem;
+            }
+
+            .project-info {
+                padding: 1.2rem;
+            }
+
+            .project-info h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .project-info p {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            .project-tag {
+                padding: 0.2rem 0.6rem;
+                font-size: 0.75rem;
+                margin-top: 0.6rem;
+            }
+
+            .about-visual {
+                height: 150px;
+                font-size: 0.9rem;
+                padding: 0.8rem;
+            }
+
+            .contact-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 15px;
+            }
+
+            .contact-form {
+                padding: 1.5rem 1rem;
+                border-radius: 15px;
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-form h3 {
+                font-size: 1.1rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .form-group {
+                margin-bottom: 1.2rem;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+                border-radius: 10px;
+            }
+
+            .submit-btn {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+
+            .contact-info h3 {
+                font-size: 1.1rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .contact-item {
+                padding: 1rem;
+                margin-bottom: 0.8rem;
+                font-size: 0.85rem;
+                border-radius: 12px;
+            }
+
+            .footer-section {
+                padding: 1rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .footer-section li,
+            .footer-section p {
+                font-size: 0.8rem;
+                line-height: 1.5;
+            }
+
+            .footer-section li {
+                margin-bottom: 0.5rem;
+            }
+
+            .footer-bottom {
+                padding-top: 1.2rem;
+                font-size: 0.75rem;
+                line-height: 1.4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar"></div>
+    </div>
+
+    <!-- Floating Shapes Background -->
+    <div class="floating-shapes">
+        <div class="shape" style="width: 60px; height: 60px; background: linear-gradient(45deg, var(--primary-blue), var(--light-blue)); opacity: 0.05; border-radius: 50%;"></div>
+        <div class="shape" style="width: 40px; height: 40px; background: var(--accent-gold); opacity: 0.03; border-radius: 50%;"></div>
+        <div class="shape" style="width: 80px; height: 80px; background: linear-gradient(45deg, var(--light-blue), var(--accent-gold)); opacity: 0.04; border-radius: 50%;"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo" onclick="showPage('home')">HEXA</div>
+                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links">
+                    <li><a class="nav-link active" onclick="showPage('home')">Home</a></li>
+                    <li><a class="nav-link" onclick="showPage('about')">About Us</a></li>
+                    <li><a class="nav-link" onclick="showPage('projects')">Projects</a></li>
+                    <li><a class="nav-link" onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HOME PAGE -->
+<div id="home" class="page active">
+    <!-- Enhanced Hero Section -->
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-award"></i>
+                    <span>Melbourne's Trusted Tilers Since 2014</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="hero-word">HEXA</span>
+                    <span class="hero-word">TILING</span>
+                </h1>
+                <div class="tagline">TRANSFORMING LIVES</div>
+                <p class="hero-description">Premium tiling services in South East Melbourne. We specialize in transforming spaces with precision, durability, and exceptional craftsmanship that stands the test of time.</p>
+                
+                <div class="cta-buttons">
+                    <div class="cta-button cta-primary" onclick="showPage('contact')">
+                        <span class="cta-icon"><i class="fas fa-phone"></i></span>
+                        <span class="cta-text">Get Free Quote</span>
+                        <span class="cta-arrow"><i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="cta-button cta-secondary" onclick="showPage('projects')">
+                        <span class="cta-icon"><i class="fas fa-eye"></i></span>
+                        <span class="cta-text">View Our Work</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number counter" data-target="500">0</span>
+                    <span class="stat-label">Happy Clients</span>
+                    <div class="stat-icon"><i class="fas fa-smile"></i></div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number counter" data-target="10">0</span>
+                    <span class="stat-label">Years Excellence</span>
+                    <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number counter" data-target="100">0</span>
+                    <span class="stat-label">Satisfaction</span>
+                    <div class="stat-icon"><i class="fas fa-heart"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll to explore</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Enhanced Services Section -->
+    <section class="content-section services-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">WHAT WE DO</span>
+                <h2 class="section-title">Our Premium Services</h2>
+                <p class="section-subtitle">Excellence in every tile, precision in every project. We deliver superior craftsmanship across all tiling disciplines.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-number">01</div>
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Residential Excellence</h3>
+                    <p>Transform your home with our expert residential tiling services. From luxury bathrooms to modern kitchens, we create spaces that reflect your lifestyle.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Bathroom Renovations</li>
+                        <li><i class="fas fa-check"></i> Kitchen Backsplashes</li>
+                        <li><i class="fas fa-check"></i> Living Areas</li>
+                    </ul>
+                    <a class="service-link" onclick="showPage('projects')">View Projects <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="featured-badge">POPULAR</div>
+                    <div class="service-number">02</div>
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Commercial Solutions</h3>
+                    <p>Professional tiling solutions for commercial spaces that demand durability and style. We handle large-scale projects with precision timing.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Office Buildings</li>
+                        <li><i class="fas fa-check"></i> Retail Spaces</li>
+                        <li><i class="fas fa-check"></i> Hospitality Venues</li>
+                    </ul>
+                    <a class="service-link" onclick="showPage('projects')">View Projects <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-number">03</div>
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Expert Renovations</h3>
+                    <p>Breathe new life into existing spaces with our comprehensive renovation expertise. We specialize in updating and modernizing tired surfaces.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Complete Makeovers</li>
+                        <li><i class="fas fa-check"></i> Repair & Restoration</li>
+                        <li><i class="fas fa-check"></i> Waterproofing</li>
+                    </ul>
+                    <a class="service-link" onclick="showPage('projects')">View Projects <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Trust Indicators Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Fully Licensed & Insured</h4>
+                    <p>Complete peace of mind with comprehensive insurance coverage</p>
+                </div>
+                <div class="trust-item" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-clock"></i>
+                    <h4>On-Time Guarantee</h4>
+                    <p>We respect your time and deliver projects on schedule</p>
+                </div>
+                <div class="trust-item" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-medal"></i>
+                    <h4>10 Year Warranty</h4>
+                    <p>Industry-leading warranty on all our workmanship</p>
+                </div>
+                <div class="trust-item" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-quote-left"></i>
+                    <h4>Free Consultation</h4>
+                    <p>No-obligation quotes with transparent pricing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Values Section -->
+    <section class="content-section featured-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">WHY CHOOSE US</span>
+                <h2 class="section-title">The Hexa Difference</h2>
+                <p class="section-subtitle">Built on three pillars that define our commitment to excellence</p>
+            </div>
+            <div class="services-grid">
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="value-icon-wrapper">
+                        <div class="value-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="value-icon-bg"></div>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We are driven by excellence in every project, ensuring superior craftsmanship and meticulous attention to detail that consistently exceeds expectations.</p>
+                    <div class="value-stats">
+                        <div class="value-stat">
+                            <span class="value-number">500+</span>
+                            <span class="value-label">Projects Completed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="value-icon-wrapper">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="value-icon-bg"></div>
+                    </div>
+                    <h3>Professionalism</h3>
+                    <p>Our expert team maintains the highest professional standards, delivering projects on time and within budget while maintaining clear communication.</p>
+                    <div class="value-stats">
+                        <div class="value-stat">
+                            <span class="value-number">100%</span>
+                            <span class="value-label">On-Time Delivery</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="value-icon-wrapper">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="value-icon-bg"></div>
+                    </div>
+                    <h3>Trust</h3>
+                    <p>Built on trust and reliability, we provide tailored solutions that stand the test of time, backed by our comprehensive quality assurance.</p>
+                    <div class="value-stats">
+                        <div class="value-stat">
+                            <span class="value-number">10 Years</span>
+                            <span class="value-label">Warranty Coverage</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New CTA Section -->
+    <section class="home-cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Transform Your Space?</h2>
+                <p>Get your free quote today and discover why we're Melbourne's most trusted tiling experts</p>
+                <div class="cta-actions">
+                    <button class="cta-button cta-primary large" onclick="showPage('contact')">
+                        <i class="fas fa-calculator"></i>
+                        Get Free Quote Now
+                    </button>
+                    <div class="cta-phone">
+                        <span>or call us directly</span>
+                        <a href="tel:0400000000" class="phone-link">
+                            <i class="fas fa-phone"></i> 0400 000 000
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+        <!-- ABOUT PAGE -->
+        <div id="about" class="page">
+            <section class="content-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Leading Tiling Excellence</h2>
+                        <p class="section-subtitle">Dedicated to transforming spaces across South East Melbourne with unparalleled craftsmanship</p>
+                    </div>
+                    
+                    <div class="about-hero">
+                        <div class="about-text">
+                            <p>Hexa Tiling is a dedicated tiling service provider committed to delivering exceptional craftsmanship and refined finishes for projects of every scale. Based in South East Melbourne, we specialize in transforming spaces with precision and durability, ensuring that every tile is laid with meticulous care.</p>
+                            
+                            <p>Driven by excellence, professionalism, and trust, we offer tailored solutions that meet the diverse needs of our clients. Whether it's a small residential update or a large commercial refurbishment, our expert team delivers superior results that truly stand the test of time.</p>
+                            
+                            <p>Our commitment to quality extends beyond just the installation. We work closely with our clients to understand their vision and provide expert guidance on tile selection, design layouts, and finishing techniques that best suit their space and lifestyle.</p>
+                        </div>
+                        <div class="about-visual">
+                            <div>Premium Tiling Craftmanship<br>South East Melbourne</div>
+                        </div>
+                    </div>
+
+                    <div class="section-header">
+                        <h3 style="font-size: 2rem; color: var(--primary-blue); margin-bottom: 2rem; text-align: center;">Our Specialized Expertise</h3>
+                    </div>
+                    <div class="expertise-grid">
+                        <div class="expertise-card">
+                            <h3><i class="fas fa-gem" style="color: var(--primary-blue); margin-right: 10px;"></i>Ceramic & Porcelain</h3>
+                            <p>Expert installation of premium ceramic and porcelain tiles for both interior and exterior applications, ensuring perfect alignment, precise cuts, and lasting durability through advanced installation techniques.</p>
+                        </div>
+                        <div class="expertise-card">
+                            <h3><i class="fas fa-mountain" style="color: var(--primary-blue); margin-right: 10px;"></i>Natural Stone Mastery</h3>
+                            <p>Specialized handling and installation of luxury natural stone materials including marble, granite, travertine, and limestone with precision cutting, expert sealing, and premium finishing techniques.</p>
+                        </div>
+                        <div class="expertise-card">
+                            <h3><i class="fas fa-paint-brush" style="color: var(--primary-blue); margin-right: 10px;"></i>Mosaic & Feature Work</h3>
+                            <p>Intricate mosaic installations and custom feature walls that create stunning focal points and add artistic flair to any space, from subtle accents to bold statement pieces.</p>
+                        </div>
+                        <div class="expertise-card">
+                            <h3><i class="fas fa-tint" style="color: var(--primary-blue); margin-right: 10px;"></i>Waterproofing Solutions</h3>
+                            <p>Comprehensive waterproofing solutions ensuring long-term protection against moisture damage in wet areas and outdoor installations, meeting all Australian building standards.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PROJECTS PAGE -->
+        <div id="projects" class="page">
+            <section class="content-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Project Showcase</h2>
+                        <p class="section-subtitle">Explore our portfolio of exceptional projects that demonstrate our commitment to excellence and attention to detail across diverse spaces and applications.</p>
+                    </div>
+                    
+                    <div class="projects-showcase">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <i class="fas fa-bath fa-2x" style="margin-bottom: 10px; display: block;"></i>
+                                    LUXURY PROJECT
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Modern Bathroom Sanctuary</h3>
+                                <p>Complete luxury bathroom transformation featuring large format porcelain tiles, custom waterfall shower niche, heated floor installation, and premium natural stone accents.</p>
+                                <span class="project-tag">Residential</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <i class="fas fa-building fa-2x" style="margin-bottom: 10px; display: block;"></i>
+                                    COMMERCIAL PROJECT
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Corporate Office Lobby</h3>
+                                <p>Sophisticated commercial installation featuring imported marble feature wall, slip-resistant porcelain flooring for high-traffic areas, and integrated lighting elements.</p>
+                                <span class="project-tag">Commercial</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <i class="fas fa-utensils fa-2x" style="margin-bottom: 10px; display: block;"></i>
+                                    KITCHEN PROJECT
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Contemporary Kitchen Design</h3>
+                                <p>Modern kitchen featuring handcrafted subway tile backsplash with contrasting grout, custom corner details, and seamless integration with cabinetry.</p>
+                                <span class="project-tag">Residential</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <i class="fas fa-tree fa-2x" style="margin-bottom: 10px; display: block;"></i>
+                                    OUTDOOR PROJECT
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Outdoor Entertainment Haven</h3>
+                                <p>Weather-resistant outdoor tiling installation with premium anti-slip surface treatment, seamless indoor-outdoor transition, and integrated drainage solutions.</p>
+                                <span class="project-tag">Outdoor</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <i class="fas fa-spa fa-2x" style="margin-bottom: 10px; display: block;"></i>
+                                    LUXURY PROJECT
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Master Ensuite Retreat</h3>
+                                <p>High-end ensuite renovation featuring rare natural stone tiles, custom niche work with integrated storage, and precision waterproofing for lasting performance.</p>
+                                <span class="project-tag">Luxury</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-image">
+                                <div class="project-overlay">
+                                    <i class="fas fa-store fa-2x" style="margin-bottom: 10px; display: block;"></i>
+                                    RETAIL PROJECT
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Boutique Retail Fitout</h3>
+                                <p>Complete retail space transformation including decorative feature walls, durable high-traffic flooring, and custom brand integration elements that enhance customer experience.</p>
+                                <span class="project-tag">Commercial</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CONTACT PAGE -->
+            <div id="contact" class="page">
+                <section class="content-section">
+                    <div class="container">
+                        <div class="section-header">
+                            <h2 class="section-title">Start Your Project</h2>
+                            <p class="section-subtitle">Ready to transform your space? Get your free quote in minutes.</p>
+                        </div>
+                        
+                        <div class="contact-wrapper">
+                            <div class="contact-grid">
+                                <div class="contact-form">
+                                    <h3 style="margin-bottom: 2rem; color: var(--primary-blue); font-size: 1.8rem;">
+                                        <i class="fas fa-calculator" style="margin-right: 10px;"></i>
+                                        Quick Quote Request
+                                    </h3>
+                                    <form id="contact-form">
+                                        <div class="form-group">
+                                            <label for="name"><i class="fas fa-user"></i> Your Name</label>
+                                            <input type="text" id="name" name="name" required placeholder="John Smith">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                                            <input type="tel" id="phone" name="phone" required placeholder="04XX XXX XXX">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message"><i class="fas fa-clipboard"></i> Project Details</label>
+                                            <textarea id="message" name="message" rows="4" required placeholder="Tell us about your tiling project - location, size, preferred timeline..."></textarea>
+                                        </div>
+                                        <button type="submit" class="submit-btn" id="submit-btn">
+                                            <i class="fas fa-paper-plane"></i>
+                                            Send Enquiry
+                                        </button>
+                                    </form>
+                                </div>
+                                
+                                <div class="contact-info">
+                                    <h3><i class="fas fa-headset"></i> Why Choose Hexa?</h3>
+                                    
+                                    <div class="contact-item">
+                                        <i class="fas fa-bolt"></i>
+                                        <strong>Lightning Fast Response</strong><br>
+                                        Get your quote within 4 hours - guaranteed!
+                                    </div>
+                                    
+                                    <div class="contact-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <strong>South East Melbourne</strong><br>
+                                        Dandenong, Frankston, Casey & Mornington Peninsula
+                                    </div>
+                                    
+                                    <div class="contact-item">
+                                        <i class="fas fa-clock"></i>
+                                        <strong>Available 7 Days</strong><br>
+                                        Mon-Fri: 7AM-5:30PM | Sat: 8AM-4PM
+                                    </div>
+                                    
+                                    <div style="margin-top: 2.5rem; padding: 2rem; background: linear-gradient(135deg, var(--primary-blue), var(--light-blue)); border-radius: 15px; color: white; text-align: center;">
+                                        <h4 style="margin-bottom: 1rem; font-size: 1.3rem;">
+                                            <i class="fas fa-phone-volume" style="margin-right: 8px;"></i>
+                                            Prefer to Call?
+                                        </h4>
+                                        <p style="font-size: 2rem; font-weight: 700; margin: 1rem 0;">
+                                            0400 000 000
+                                        </p>
+                                        <p style="font-size: 0.9rem; opacity: 0.9;">
+                                            Speak directly with our tiling experts
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-hammer" style="margin-right: 10px;"></i>Hexa Tiling Pty Ltd</h3>
+                    <p>Premium tiling services in South East Melbourne. Built on excellence, professionalism, and trust - delivering superior results in every project, large or small.</p>
+                    <div style="margin-top: 1rem;">
+                        <strong>ABN:</strong> Licensed & Insured<br>
+                        <strong>Established:</strong> 2014
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-cogs" style="margin-right: 10px;"></i>Our Services</h3>
+                    <ul>
+                        <li><i class="fas fa-chevron-right"></i>Residential Tiling</li>
+                        <li><i class="fas fa-chevron-right"></i>Commercial Projects</li>
+                        <li><i class="fas fa-chevron-right"></i>Bathroom Renovations</li>
+                        <li><i class="fas fa-chevron-right"></i>Kitchen Backsplashes</li>
+                        <li><i class="fas fa-chevron-right"></i>Waterproofing</li>
+                        <li><i class="fas fa-chevron-right"></i>Natural Stone Installation</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-map-marked-alt" style="margin-right: 10px;"></i>Service Areas</h3>
+                    <ul>
+                        <li><i class="fas fa-map-pin"></i>South East Melbourne</li>
+                        <li><i class="fas fa-map-pin"></i>Greater Dandenong</li>
+                        <li><i class="fas fa-map-pin"></i>City of Frankston</li>
+                        <li><i class="fas fa-map-pin"></i>Mornington Peninsula</li>
+                        <li><i class="fas fa-map-pin"></i>Casey & Cardinia</li>
+                        <li><i class="fas fa-map-pin"></i>Surrounding Areas</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Hexa Tiling Pty Ltd. All rights reserved. | Licensed & Insured | <strong>Excellence in Every Tile</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (navLinks) navLinks.classList.toggle('active');
+            if (mobileBtn) mobileBtn.classList.toggle('active');
+        }
+
+        // Page Navigation Function
+        function showPage(pageId) {
+            // Close mobile menu if open
+            const navLinks = document.querySelector('.nav-links');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            if (navLinks) navLinks.classList.remove('active');
+            if (mobileBtn) mobileBtn.classList.remove('active');
+            
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Update navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Find the clicked nav link and add active class
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.textContent.toLowerCase().includes(pageId) || 
+                    (pageId === 'home' && link.textContent.toLowerCase().includes('home'))) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Scroll Progress Bar
+        function updateScrollProgress() {
+            const scrollProgress = document.querySelector('.scroll-progress-bar');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            
+            if (scrollProgress) {
+                scrollProgress.style.width = scrollPercent + '%';
+            }
+        }
+
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target')) || parseInt(counter.textContent);
+                const text = counter.textContent;
+                const isPercentage = text.includes('%');
+                const hasPlus = text.includes('+');
+                
+                let current = 0;
+                const increment = target / 100;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target + (isPercentage ? '%' : hasPlus ? '+' : '');
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current) + (isPercentage ? '%' : hasPlus ? '+' : '');
+                    }
+                }, 20);
+            });
+        }
+
+        // Form Submission
+        // Initialize EmailJS (add this at the beginning of your script section)
+(function() {
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+})();
+
+// Form Submission with EmailJS
+function setupForm() {
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const originalHTML = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            submitBtn.style.background = '#6c757d';
+            
+            // Prepare template parameters
+            const templateParams = {
+                from_name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                message: document.getElementById('message').value,
+                to_email: 'your-email@example.com' // Replace with your email
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success state
+                    submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Message Sent!';
+                    submitBtn.style.background = '#28a745';
+                    
+                    setTimeout(() => {
+                        alert(`Thank you ${templateParams.from_name}! We've received your enquiry and will call you within 4 hours with your free quote.`);
+                        
+                        // Reset form
+                        form.reset();
+                        submitBtn.innerHTML = originalHTML;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                    }, 1500);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Show error state
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error - Please Call Us';
+                    submitBtn.style.background = '#dc3545';
+                    
+                    setTimeout(() => {
+                        alert('Sorry, there was an error sending your message. Please call us directly on 0400 000 000');
+                        submitBtn.innerHTML = originalHTML;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                    }, 2000);
+                });
+        });
+    }
+}
+
+        // Header scroll effect
+        function setupHeaderScroll() {
+            let lastScrollTop = 0;
+            const header = document.querySelector('header');
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 50) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.backdropFilter = 'blur(20px)';
+                    header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+                } else {
+                    header.style.background = 'rgba(255,255,255,0.95)';
+                    header.style.backdropFilter = 'blur(10px)';
+                    header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                }
+                
+                updateScrollProgress();
+            }, { passive: true });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            
+            if (navLinks && navLinks.classList.contains('active') && 
+                !nav.contains(e.target)) {
+                navLinks.classList.remove('active');
+                if (mobileBtn) mobileBtn.classList.remove('active');
+            }
+        });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            setupForm();
+            setupHeaderScroll();
+            
+            // Animate counters on page load
+            setTimeout(() => {
+                animateCounters();
+            }, 1000);
+            
+            // Setup scroll progress
+            updateScrollProgress();
+            
+            // Add touch support for iOS Safari
+            document.addEventListener('touchstart', function() {}, { passive: true });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Optimize performance for mobile devices
+        let ticking = false;
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateScrollProgress);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick, { passive: true });
+
+        // Prevent zoom on double tap for iOS
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
